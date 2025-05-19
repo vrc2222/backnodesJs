@@ -14,4 +14,5 @@ app.use('/healthcheck', require("./services/healthcheck/routes"));
 
 // Ruta para sincronizar DB
 app.use("/db", require("./_helpers/db"));  // <- aquí conectas la ruta /db/sync
+app.use("/user", require("./services/user/routes"));  // <- aquí conectas la ruta /db/sync
 module.exports=app;
