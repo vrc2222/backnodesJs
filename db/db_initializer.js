@@ -20,7 +20,8 @@ async function createUserAdmin() {
       username: 'admin',
       password: hashedPassword,
       email: 'admin@example.com',
-      identification: '1234'
+      identification: '1234',
+      role: 'ADMIN',
     });
     console.log('Datos maestros insertados');
 }
