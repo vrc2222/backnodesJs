@@ -4,7 +4,6 @@ const sequelize = require('../db');
 const User = sequelize.define('User', { // USER= una tabla
   username: {
     type: DataTypes.STRING,
-    unique: true,
     allowNull: false
   },
   password: {
@@ -19,6 +18,16 @@ const User = sequelize.define('User', { // USER= una tabla
   identification: {
     type: DataTypes.STRING,
     unique: true,
+    allowNull: false
+  },
+  role: {
+    type: DataTypes.ENUM('ADMIN', 'USER'), // ENUM = solo puede ser uno de los valores
+    defaultValue: 'USER',
+    allowNull: false
+  },
+  is_active:{
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
     allowNull: false
   }
 }, { // todos los modelos deben tener esto:
