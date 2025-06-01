@@ -62,6 +62,25 @@ class UserDb {
     user.is_active = false;
     return user.save();
   }
+  async updateUser(data) {
+    const user = await models.User.findOne({
+      where: {
+        id: data.id,
+        is_active: true,
+      },
+    });
+
+    if (!user) {
+      const error = new Error("Usuario no encontrado");
+      error.status = 404;
+      throw error;
+    }
+
+    user.username = data.username;
+    user.email = data.email;
+
+    return user.save(); // guarda los cambios
+  }
 }
 
 module.exports = UserDb;

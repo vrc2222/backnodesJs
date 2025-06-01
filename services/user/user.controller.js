@@ -46,9 +46,22 @@ function deleteUser(req, res, next) {
       res.status(500).json({ error: "Error al eliminar el usuario" });
     });
 }
+function updateUser(req, res, next) {
+  new UserService()
+    .updateUser(req)
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json({ error: 'Error al actualizar usuario' });
+    });
+}
+
 module.exports = {
   validateUser,
   create,
   getUsersByRole,
   deleteUser,
-};
+  updateUser,
+}
